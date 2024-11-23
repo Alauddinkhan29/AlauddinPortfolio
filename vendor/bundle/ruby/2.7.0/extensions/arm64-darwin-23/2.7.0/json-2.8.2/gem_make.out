@@ -1,0 +1,21 @@
+current directory: /Users/alauddinkhan/Documents/AlauddinPortfolio/vendor/bundle/ruby/2.7.0/gems/json-2.8.2/ext/json/ext/parser
+/Users/alauddinkhan/.rvm/rubies/ruby-2.7.6/bin/ruby -I /Users/alauddinkhan/.rvm/rubies/ruby-2.7.6/lib/ruby/2.7.0 -r ./siteconf20241117-27647-152b2n8.rb extconf.rb
+checking for rb_enc_interned_str() in ruby.h... no
+checking for rb_hash_new_capa() in ruby.h... no
+checking for rb_gc_mark_locations() in ruby.h... yes
+checking for rb_hash_bulk_insert() in ruby.h... yes
+checking for rb_category_warn() in ruby.h... no
+checking for whether -std=c99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /Users/alauddinkhan/Documents/AlauddinPortfolio/vendor/bundle/ruby/2.7.0/gems/json-2.8.2/ext/json/ext/parser
+make "DESTDIR=" clean
+
+current directory: /Users/alauddinkhan/Documents/AlauddinPortfolio/vendor/bundle/ruby/2.7.0/gems/json-2.8.2/ext/json/ext/parser
+make "DESTDIR="
+compiling parser.c
+linking shared-object json/ext/parser.bundle
+
+current directory: /Users/alauddinkhan/Documents/AlauddinPortfolio/vendor/bundle/ruby/2.7.0/gems/json-2.8.2/ext/json/ext/parser
+make "DESTDIR=" install
+/opt/homebrew/opt/coreutils/bin/ginstall -c -m 0755 parser.bundle ./.gem.20241117-27647-1hqnfq3/json/ext

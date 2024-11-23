@@ -1,0 +1,9 @@
+export const COLOR = {
+    TXT_COLOR: "#F54C10",
+    BACK_COLOR: "#F4AE1D",
+    BACK_COLOR2: "#F69B1B",
+    WHITE: "#FFFFFF",
+    TEXT_BACK_VIEW: "#343E47",
+    SUBTXT: "#898A8D",
+    BACKGROUND_COLOR: "#101010"
+};

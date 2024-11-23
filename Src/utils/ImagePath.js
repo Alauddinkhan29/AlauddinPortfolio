@@ -1,0 +1,18 @@
+export const ImagePath = {
+  Aicon: require("../assets/images/letterA.jpeg"),
+  closeIcon: require("../assets/images/close.png"),
+  // bottomIcon: require("../assets/images/bottomicon.j"),
+  // bottomIcon2: require("../assets/images/bottomIcon2.png"),
+  bottomIconfinal: require("../assets/images/bottomiconfinal.jpeg"),
+  linkedin: require("../assets/images/linkedin.png"),
+  github: require("../assets/images/github.png"),
+  native: require("../assets/images/Native.png"),
+  flutter: require("../assets/images/flutter.jpg"),
+  profilePic: require("../assets/images/profilepic.jpeg"),
+  Option: require("../assets/images/more.png"),
+  BackIcon: require("../assets/images/backIcon.png"),
+  Agent: require("../assets/images/Agent.png"),
+  Adihex: require("../assets/images/Adihex.png"),
+  Shopmatic: require("../assets/images/shopmatic.png"),
+  TataMotors: require("../assets/images/tatamotors.png"),
+};
