@@ -9,7 +9,7 @@ const ProjectApi = {
             console.log("==== res in API", response)
             return response.data;
         } catch (error) {
-            console.log("==== error in API call", error)
+            console.log("==== error in API call", error.response)
             // Handle errors using error handling utilities
             throw error;
         }

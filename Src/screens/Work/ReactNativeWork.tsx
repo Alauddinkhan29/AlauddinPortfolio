@@ -1,4 +1,4 @@
-import { FlatList, Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, FlatList, Image, Platform, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import { COLOR } from '../../utils/Color'
@@ -7,6 +7,8 @@ import { ImagePath } from '../../utils/ImagePath'
 import { FONTS } from '../../utils/fonts'
 import ProjectApi from '../../api/ProjectApi'
 import LottieView from 'lottie-react-native'
+import { showMessage } from 'react-native-flash-message'
+const { height, width } = Dimensions.get('window')
 
 const ReactNativeWork = (props: any) => {
     const [projectsData, setProjectsData] = useState<Projects[]>([]);
@@ -22,6 +24,19 @@ const ReactNativeWork = (props: any) => {
                 setLoadingProjects(false)
             } catch (err) {
                 console.error("Error fetching users:", err);
+                // showMessage({
+                //     message: "No response",
+                //     type: "danger",
+                //     icon: "danger",
+                //     textStyle: { fontSize: height / 55 },
+                //     style: {
+                //         width: Platform.OS === "android" ? width * 0.92 : null,
+                //         borderRadius: Platform.OS === "android" ? 5 : null,
+                //         margin: Platform.OS === "android" ? 15 : null,
+                //         alignItems: Platform.OS === "android" ? "center" : null,
+                //     },
+                // })
+                setLoadingProjects(false)
             }
         };
 
