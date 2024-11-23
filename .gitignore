@@ -1,0 +1,56 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+build/
+android/app/build/
+ios/build/
+ios/Pods/
+android/.gradle/
+android/.idea/
+*.keystore
+*.so
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.orig
+
+# React Native
+*.xcworkspace
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/xcshareddata/
+android/app/debug.keystore
+android/app/release.keystore
+android/app/proguard-rules.pro
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Generated files
+babel.config.js
+metro.config.js
+package-lock.json
+yarn.lock
+index.android.js
+index.ios.js
