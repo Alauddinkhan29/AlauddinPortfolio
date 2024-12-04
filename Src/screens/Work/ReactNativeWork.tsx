@@ -24,18 +24,6 @@ const ReactNativeWork = (props: any) => {
                 setLoadingProjects(false)
             } catch (err) {
                 console.error("Error fetching users:", err);
-                // showMessage({
-                //     message: "No response",
-                //     type: "danger",
-                //     icon: "danger",
-                //     textStyle: { fontSize: height / 55 },
-                //     style: {
-                //         width: Platform.OS === "android" ? width * 0.92 : null,
-                //         borderRadius: Platform.OS === "android" ? 5 : null,
-                //         margin: Platform.OS === "android" ? 15 : null,
-                //         alignItems: Platform.OS === "android" ? "center" : null,
-                //     },
-                // })
                 setLoadingProjects(false)
             }
         };
@@ -71,7 +59,7 @@ const ReactNativeWork = (props: any) => {
                                 return (
                                     <View style={styles.projectMainView}>
                                         <TouchableOpacity onPress={() => { props.navigation.navigate('ProjectDetails', { Id: item.projectId }) }} style={styles.projectBtnView}>
-                                            <Image source={{ uri: item.projectPicUrl }} style={{ borderRadius: 15, height: verticalScale(150), width: horizontalScale(150) }} />
+                                            <Image source={{ uri: item.projectPicUrl }} style={{ borderRadius: 15, height: verticalScale(145), width: horizontalScale(145) }} />
                                         </TouchableOpacity>
                                         <Text style={styles.txtTheme}>{item.projectName}</Text>
                                     </View>

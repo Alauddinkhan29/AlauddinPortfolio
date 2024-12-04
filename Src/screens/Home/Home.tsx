@@ -36,26 +36,62 @@ const Home = (props: any) => {
                             </View>
                             <View style={{ flexDirection: "row", height: verticalScale(80), width: horizontalScale(300), justifyContent: "space-around", alignItems: "center" }}>
                                 <TouchableOpacity style={styles.githubBtn}>
-                                    <Image source={ImagePath.github} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} />
+                                    {/* <Image source={ImagePath.github} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} /> */}
+                                    <LottieView
+                                        source={ImagePath.github}
+                                        autoPlay
+                                        loop
+                                        style={{ width: horizontalScale(70), height: verticalScale(70) }}
+                                    />
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.githubBtn}>
-                                    <Image source={ImagePath.linkedin} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} />
+                                    {/* <Image source={ImagePath.linkedin} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} /> */}
+                                    <LottieView
+                                        source={ImagePath.linkedin}
+                                        autoPlay
+                                        loop
+                                        style={{ width: horizontalScale(70), height: verticalScale(70) }}
+                                    />
                                 </TouchableOpacity>
                             </View>
                         </View>
                         :
                         <>
                             <TouchableOpacity onPress={() => props.navigation.navigate('About')} style={styles.optionView}>
-                                <Text style={styles.optionTxt}>About</Text>
+                                <LottieView
+                                    source={ImagePath.AboutIcon}
+                                    autoPlay
+                                    loop
+                                    style={{ width: horizontalScale(40), height: verticalScale(40) }}
+                                />
+                                <View style={styles.optionTxtView}>
+                                    <Text style={styles.optionTxt}>About</Text>
+                                </View>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => props.navigation.navigate('Work')} style={styles.optionView}>
-                                <Text style={styles.optionTxt}>Work</Text>
+                                <LottieView
+                                    source={ImagePath.WorkIcon}
+                                    autoPlay
+                                    loop
+                                    style={{ width: horizontalScale(40), height: verticalScale(40) }}
+                                />
+                                <View style={styles.optionTxtView}>
+                                    <Text style={styles.optionTxt}>Work</Text>
+                                </View>
                             </TouchableOpacity>
                             {/* <TouchableOpacity onPress={() => props.navigation.navigate('Service')} style={styles.optionView}>
                                 <Text style={styles.optionTxt}>Service</Text>
                             </TouchableOpacity> */}
                             <TouchableOpacity onPress={() => props.navigation.navigate('ContactMe')} style={styles.optionView}>
-                                <Text style={styles.optionTxt}>Contact</Text>
+                                <LottieView
+                                    source={ImagePath.ContactIcon}
+                                    autoPlay
+                                    loop
+                                    style={{ width: horizontalScale(40), height: verticalScale(40) }}
+                                />
+                                <View style={styles.optionTxtView}>
+                                    <Text style={styles.optionTxt}>Contact</Text>
+                                </View>
                             </TouchableOpacity>
                         </>
                 }
@@ -70,6 +106,12 @@ const Home = (props: any) => {
 export default Home
 
 const styles = StyleSheet.create({
+    optionTxtView: {
+        height: verticalScale(40),
+        width: horizontalScale(100),
+        justifyContent: "center",
+        // backgroundColor: "pink",
+    },
     githubBtn: {
         height: verticalScale(70),
         width: horizontalScale(80),
@@ -97,9 +139,10 @@ const styles = StyleSheet.create({
     },
     optionView: {
         height: verticalScale(80),
-        width: horizontalScale(300),
+        width: horizontalScale(180),
+        flexDirection: "row",
         // backgroundColor: "red",
-        justifyContent: "center",
+        justifyContent: "space-around",
         alignItems: "center"
     },
     middleView: {

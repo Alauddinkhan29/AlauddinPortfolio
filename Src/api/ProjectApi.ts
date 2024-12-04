@@ -1,5 +1,5 @@
 import axiosInstance from "./AxiosIntance";
-import { projectDetailConstant, projectDetailsConstant } from '../api/ApiConstant';
+import { contactMeConstant, projectDetailConstant, projectDetailsConstant } from '../api/ApiConstant';
 
 
 const ProjectApi = {
@@ -30,6 +30,18 @@ const ProjectApi = {
     getProjectDetails: async (id: String) => {
         try {
             const response = await axiosInstance.get(projectDetailConstant + id);
+            console.log("==== res in API", response)
+            return response.data;
+        } catch (error) {
+            console.log("==== error in API call", error)
+            // Handle errors using error handling utilities
+            throw error;
+        }
+    },
+
+    contactMe: async (data: Object) => {
+        try {
+            const response = await axiosInstance.post(contactMeConstant, data);
             console.log("==== res in API", response)
             return response.data;
         } catch (error) {

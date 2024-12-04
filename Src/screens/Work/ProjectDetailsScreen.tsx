@@ -1,4 +1,4 @@
-import { Image, Linking, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Image, Linking, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import { COLOR } from '../../utils/Color'
@@ -6,6 +6,7 @@ import { ImagePath } from '../../utils/ImagePath'
 import { verticalScale } from '../../utils/Scale'
 import { Video } from 'react-native-video';
 import ProjectApi from '../../api/ProjectApi'
+import { FONTS } from '../../utils/fonts'
 
 const ProjectDetailsScreen = (props: any) => {
     const [projectData, setProjectData] = useState<Project>();
@@ -32,7 +33,7 @@ const ProjectDetailsScreen = (props: any) => {
                 onBackPress={() => props.navigation.goBack()}
                 title={projectData?.name}
             />
-            <View style={styles.content}>
+            <ScrollView style={styles.content}>
                 {/* <Text style={styles.title}>Shopmatic</Text> */}
                 <Image source={{ uri: projectData?.picUrl }} style={styles.image} />
                 <Video
@@ -41,16 +42,21 @@ const ProjectDetailsScreen = (props: any) => {
                     controls // Enable controls for playback
                     onError={(error) => console.error('Video error:', error)}
                 />
-                <Text style={styles.description}>{projectData?.description}</Text>
-                <Text style={styles.technologies}>Technologies Used: {projectData?.framework}, {projectData?.programmingLanguage}, {projectData?.stateManagementSystem}</Text>
+                <View style={styles.descriptionView}>
+                    <Text style={styles.description}>{projectData?.description}</Text>
+                </View>
+                <Text style={styles.technologies}>Technologies Used: </Text>
+                <Text style={styles.keyTxt}>Frame Work : {projectData?.framework}</Text>
+                <Text style={styles.keyTxt}>Programming Language : {projectData?.programmingLanguage}</Text>
+                <Text style={styles.keyTxt}>State Management System : {projectData?.stateManagementSystem}</Text>
 
-                <Text style={styles.link} onPress={() => Linking.openURL(projectData?.videoUrl)}>
+                {/* <Text style={styles.link} onPress={() => Linking.openURL(projectData?.videoUrl)}>
                     Live Demo
-                </Text>
+                </Text> */}
 
 
 
-            </View>
+            </ScrollView>
         </SafeAreaView>
     )
 }
@@ -58,6 +64,22 @@ const ProjectDetailsScreen = (props: any) => {
 export default ProjectDetailsScreen
 
 const styles = StyleSheet.create({
+    descriptionView: {
+        padding: 15,
+        backgroundColor: COLOR.TEXT_BACK_VIEW,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10,
+        shadowColor: "#FFF",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+    },
     container: {
         flex: 1,
         backgroundColor: COLOR.BACKGROUND_COLOR, // Use your desired background color
@@ -79,14 +101,24 @@ const styles = StyleSheet.create({
         resizeMode: "contain"
     },
     description: {
-        fontSize: 16,
-        marginBottom: 16,
+        lineHeight: 22.0,
+        fontSize: verticalScale(16),
+        // marginBottom: 16,
         color: COLOR.WHITE,
+        fontFamily: FONTS.InterDisplayMedium
     },
     technologies: {
-        fontSize: 14,
+        marginTop: 15,
+        fontSize: verticalScale(20),
         marginBottom: 8,
         color: COLOR.WHITE,
+        fontFamily: FONTS.InterDisplayMedium
+    },
+    keyTxt: {
+        fontSize: verticalScale(15),
+        marginBottom: 8,
+        color: COLOR.WHITE,
+        fontFamily: FONTS.InterDisplayMedium
     },
     link: {
         fontSize: 16,
@@ -95,8 +127,9 @@ const styles = StyleSheet.create({
     },
     video: {
         width: '100%', // Make the video responsive
-        height: 200, // Adjust video height as needed
+        height: 500, // Adjust video height as needed
         marginBottom: 16,
-        backgroundColor: "red"
+        resizeMode: "contain"
+        // backgroundColor: "red"
     },
 })
