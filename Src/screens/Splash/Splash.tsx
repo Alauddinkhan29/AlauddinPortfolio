@@ -4,6 +4,8 @@ import { COLOR } from '../../utils/Color';
 import { ImagePath } from '../../utils/ImagePath';
 import { horizontalScale } from '../../utils/Scale';
 import { FONTS } from '../../utils/fonts';
+import DeviceInfo from 'react-native-device-info';
+import * as RNLocalize from 'react-native-localize';
 
 const Splash = (props: any) => {
     const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -16,6 +18,39 @@ const Splash = (props: any) => {
         }).start(() => {
             props.navigation.navigate('Home');
         });
+    }, []);
+
+    useEffect(() => {
+        const fetchDetails = async () => {
+            // Device Information
+            const deviceModel = DeviceInfo.getModel();
+            const osVersion = DeviceInfo.getSystemVersion();
+            const appVersion = DeviceInfo.getVersion();
+            const locale = RNLocalize.getLocales()[0];
+            const language = locale.languageTag;
+            const region = locale.countryCode;
+
+            // Network Information
+            const ipAddress = await DeviceInfo.getIpAddress();
+
+            // Metadata
+            const installTime = await DeviceInfo.getFirstInstallTime();
+            const lastUpdateTime = await DeviceInfo.getLastUpdateTime();
+
+
+            console.log("==== splash", {
+                deviceModel,
+                osVersion,
+                appVersion,
+                language,
+                region,
+                ipAddress,
+                installTime,
+                lastUpdateTime,
+            });
+        };
+
+        fetchDetails();
     }, []);
 
     return (

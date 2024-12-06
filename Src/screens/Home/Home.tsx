@@ -5,6 +5,7 @@ import { ImagePath } from '../../utils/ImagePath'
 import { FONTS } from '../../utils/fonts'
 import { COLOR } from '../../utils/Color'
 import LottieView from 'lottie-react-native';
+import LinearGradient from 'react-native-linear-gradient'
 const { height, width } = Dimensions.get('window');
 
 const Home = (props: any) => {
@@ -29,12 +30,17 @@ const Home = (props: any) => {
                                     <Image source={ImagePath.profilePic} style={{ height: 120, width: 120, resizeMode: "cover" }} />
                                 </View>
                             </View>
-                            <View style={{ height: verticalScale(280), width: horizontalScale(300), justifyContent: "center", alignItems: "center" }}>
-                                <Text style={[styles.aboutTxt, { marginTop: 20 }]}>Hello, My name is Alauddin Khan. {'\n'}An Skilled Mobile App Developer with an expertise in Flutter and React Native.
-                                    {/* Proven ability to design, develop, and deploy high-performance mobile applications for iOS and Android platforms. */}
-                                </Text>
-                            </View>
-                            <View style={{ flexDirection: "row", height: verticalScale(80), width: horizontalScale(300), justifyContent: "space-around", alignItems: "center" }}>
+                            <LinearGradient
+                                start={{ x: 0, y: 0 }} // Start at the left
+                                end={{ x: 1, y: 0 }}   // End at the right
+                                colors={['#15202C', '#29333E', '#37414A']}
+                                style={styles.linearGradient}
+                            >
+                                <View style={{ height: verticalScale(280), width: horizontalScale(300), justifyContent: "center", alignItems: "center" }}>
+                                    <Text style={[styles.aboutTxt, { marginTop: 20 }]}>Hello, My name is Alauddin Khan. {'\n'}An Skilled Mobile App Developer with an expertise in Flutter and React Native.</Text>
+                                </View>
+                            </LinearGradient>
+                            <View style={{ marginTop: 30, flexDirection: "row", height: verticalScale(80), width: horizontalScale(300), justifyContent: "space-around", alignItems: "center" }}>
                                 <TouchableOpacity style={styles.githubBtn}>
                                     {/* <Image source={ImagePath.github} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} /> */}
                                     <LottieView
@@ -106,6 +112,14 @@ const Home = (props: any) => {
 export default Home
 
 const styles = StyleSheet.create({
+    linearGradient: {
+        marginTop: 30,
+        height: verticalScale(250),
+        width: horizontalScale(320),
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 10
+    },
     optionTxtView: {
         height: verticalScale(40),
         width: horizontalScale(100),
@@ -121,14 +135,14 @@ const styles = StyleSheet.create({
     },
     aboutTxtView: {
         height: verticalScale(400),
-        width: horizontalScale(300),
+        width: horizontalScale(320),
         // justifyContent: "center",
         // alignItems: "center",
         // backgroundColor: "lightgrey"
     },
     aboutTxt: {
         fontFamily: FONTS.InterBold,
-        fontSize: horizontalScale(22),
+        fontSize: horizontalScale(20),
         color: COLOR.WHITE,
         textAlign: "center"
     },

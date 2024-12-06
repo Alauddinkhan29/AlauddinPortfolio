@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "RNLocalizeSpec_autolinked_build",
+		"source" : "/Users/alauddinkhan/Documents/MyPortfolioApp/AlauddinPortfolio/node_modules/react-native-localize/android/build/generated/source/codegen/jni"
+	}
+}

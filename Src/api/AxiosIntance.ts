@@ -4,7 +4,8 @@ import { showMessage } from 'react-native-flash-message';
 const { height, width } = Dimensions.get('window')
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:9003',
+    // baseURL: 'http://localhost:9003', // Dev
+    baseURL: 'https://alauddin-portfolio-fa2321ada1e9.herokuapp.com', // Prod
     timeout: 15000,
     headers: {
         'Content-Type': 'application/json',

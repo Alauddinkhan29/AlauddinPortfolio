@@ -6,6 +6,7 @@ import { ImagePath } from '../../utils/ImagePath'
 import { horizontalScale, verticalScale } from '../../utils/Scale'
 import { FONTS } from '../../utils/fonts'
 import ProjectApi from '../../api/ProjectApi'
+import LottieView from 'lottie-react-native'
 
 const Work = (props: any) => {
 
@@ -28,13 +29,23 @@ const Work = (props: any) => {
             <View style={styles.btnView}>
                 <View style={styles.reactNativeBtnView}>
                     <TouchableOpacity onPress={() => { props.navigation.navigate('ReactNativeWork') }} style={styles.reactBtnView}>
-                        <Image source={ImagePath.native} style={{ height: verticalScale(100), width: horizontalScale(100) }} />
+                        <LottieView
+                            source={ImagePath.native}
+                            autoPlay
+                            loop
+                            style={{ width: horizontalScale(100), height: verticalScale(100) }}
+                        />
                     </TouchableOpacity>
                     <Text style={styles.txtTheme}>React Native</Text>
                 </View>
                 <View style={styles.flutterProBtnView}>
                     <TouchableOpacity onPress={() => { props.navigation.navigate('FlutterWork') }} style={styles.flutterBtnView}>
-                        <Image source={ImagePath.flutter} style={{ height: verticalScale(100), width: horizontalScale(100) }} />
+                        <LottieView
+                            source={ImagePath.flutter}
+                            autoPlay
+                            loop
+                            style={{ width: horizontalScale(140), height: verticalScale(140) }}
+                        />
                     </TouchableOpacity>
                     <Text style={styles.txtTheme}>Flutter</Text>
                 </View>

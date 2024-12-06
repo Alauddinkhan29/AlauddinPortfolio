@@ -8,8 +8,6 @@ import LottieView from 'lottie-react-native';
 import { ImagePath } from '../../utils/ImagePath';
 import ProjectApi from '../../api/ProjectApi';
 import { showMessage } from 'react-native-flash-message';
-import DeviceInfo from 'react-native-device-info';
-import * as RNLocalize from 'react-native-localize';
 const { height, width } = Dimensions.get('window')
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -22,38 +20,7 @@ const ContactMeScreen = (props: any) => {
         message: ''
     })
 
-    useEffect(() => {
-        const fetchDetails = async () => {
-            // Device Information
-            const deviceModel = DeviceInfo.getModel();
-            const osVersion = DeviceInfo.getSystemVersion();
-            const appVersion = DeviceInfo.getVersion();
-            const locale = RNLocalize.getLocales()[0];
-            const language = locale.languageTag;
-            const region = locale.countryCode;
 
-            // Network Information
-            const ipAddress = await DeviceInfo.getIpAddress();
-
-            // Metadata
-            const installTime = await DeviceInfo.getFirstInstallTime();
-            const lastUpdateTime = await DeviceInfo.getLastUpdateTime();
-
-
-            console.log({
-                deviceModel,
-                osVersion,
-                appVersion,
-                language,
-                region,
-                ipAddress,
-                installTime,
-                lastUpdateTime,
-            });
-        };
-
-        fetchDetails();
-    }, []);
 
 
 
