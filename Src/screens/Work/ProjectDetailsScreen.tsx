@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import { COLOR } from '../../utils/Color'
 import { ImagePath } from '../../utils/ImagePath'
-import { verticalScale } from '../../utils/Scale'
+import { horizontalScale, verticalScale } from '../../utils/Scale'
 import { Video } from 'react-native-video';
 import ProjectApi from '../../api/ProjectApi'
 import { FONTS } from '../../utils/fonts'
+import LottieView from 'lottie-react-native'
 
 const ProjectDetailsScreen = (props: any) => {
     const [projectData, setProjectData] = useState<Project>();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         console.log("=== props", props.route.params.Id)
@@ -21,8 +23,10 @@ const ProjectDetailsScreen = (props: any) => {
             const res = await ProjectApi.getProjectDetails(id);
             console.log("==== res in project details", res)
             setProjectData(res.data); // Assuming the API returns an array of users
+            setIsLoading(false)
         } catch (err) {
             console.error("Error fetching users:", err);
+            setIsLoading(false);
         }
     };
 
@@ -33,30 +37,45 @@ const ProjectDetailsScreen = (props: any) => {
                 onBackPress={() => props.navigation.goBack()}
                 title={projectData?.name}
             />
-            <ScrollView style={styles.content}>
-                {/* <Text style={styles.title}>Shopmatic</Text> */}
-                <Image source={{ uri: projectData?.picUrl }} style={styles.image} />
-                <Video
-                    source={{ uri: projectData?.videoUrl }} // Set the video source URL
-                    style={styles.video}
-                    controls // Enable controls for playback
-                    onError={(error) => console.error('Video error:', error)}
-                />
-                <View style={styles.descriptionView}>
-                    <Text style={styles.description}>{projectData?.description}</Text>
-                </View>
-                <Text style={styles.technologies}>Technologies Used: </Text>
-                <Text style={styles.keyTxt}>Frame Work : {projectData?.framework}</Text>
-                <Text style={styles.keyTxt}>Programming Language : {projectData?.programmingLanguage}</Text>
-                <Text style={styles.keyTxt}>State Management System : {projectData?.stateManagementSystem}</Text>
+            {
+                isLoading ?
+                    <View style={styles.loadingView}>
+                        <LottieView
+                            source={require('../../assets/images/wired-lineal-212-arrow-1-rounded-hover-pinch.json')}
+                            autoPlay
+                            loop
+                            style={{ width: horizontalScale(70), height: verticalScale(70) }}
+                        />
+                        <Text style={{ marginTop: 10, color: "white", fontFamily: FONTS.InterBold, fontSize: horizontalScale(14) }}>Loading, Please wait.....</Text>
+                    </View>
+                    :
+                    <ScrollView
+                        contentContainerStyle={{ marginBottom: 15 }}
+                        style={styles.content}>
+                        {/* <Text style={styles.title}>Shopmatic</Text> */}
+                        <Image source={{ uri: projectData?.picUrl }} style={styles.image} />
+                        {
+                            projectData?.videoUrl != null || projectData?.videoUrl != ''
+                                ?
+                                <Video
+                                    source={{ uri: projectData?.videoUrl }} // Set the video source URL
+                                    style={styles.video}
+                                    controls // Enable controls for playback
+                                    onError={(error) => console.error('Video error:', error)}
+                                />
+                                :
+                                null
+                        }
+                        <View style={styles.descriptionView}>
+                            <Text style={styles.description}>{projectData?.description}</Text>
+                        </View>
+                        <Text style={styles.technologies}>Technologies Used: </Text>
+                        <Text style={styles.keyTxt}>Frame Work : {projectData?.framework}</Text>
+                        <Text style={styles.keyTxt}>Programming Language : {projectData?.programmingLanguage}</Text>
+                        <Text style={styles.keyTxt}>State Management System : {projectData?.stateManagementSystem}</Text>
 
-                {/* <Text style={styles.link} onPress={() => Linking.openURL(projectData?.videoUrl)}>
-                    Live Demo
-                </Text> */}
-
-
-
-            </ScrollView>
+                    </ScrollView>
+            }
         </SafeAreaView>
     )
 }
@@ -64,6 +83,11 @@ const ProjectDetailsScreen = (props: any) => {
 export default ProjectDetailsScreen
 
 const styles = StyleSheet.create({
+    loadingView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
     descriptionView: {
         padding: 15,
         backgroundColor: COLOR.TEXT_BACK_VIEW,
@@ -82,10 +106,14 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: COLOR.BACKGROUND_COLOR, // Use your desired background color
+        backgroundColor: COLOR.BACKGROUND_COLOR,
     },
     content: {
-        padding: 20, // Add padding for better spacing
+        flex: 1,
+        // justifyContent: "center",
+        // alignItems: "center",
+        alignSelf: "center",
+        padding: 20
     },
     title: {
         fontSize: 24,
@@ -94,8 +122,8 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     image: {
-        width: '100%', // Make the image responsive
-        height: verticalScale(200), // Adjust image height as needed
+        width: '100%',
+        height: verticalScale(200),
         marginBottom: 16,
         borderRadius: 10,
         resizeMode: "contain"

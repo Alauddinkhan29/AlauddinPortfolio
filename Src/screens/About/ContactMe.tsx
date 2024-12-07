@@ -9,6 +9,7 @@ import { ImagePath } from '../../utils/ImagePath';
 import ProjectApi from '../../api/ProjectApi';
 import { showMessage } from 'react-native-flash-message';
 const { height, width } = Dimensions.get('window')
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ContactMeScreen = (props: any) => {
@@ -19,27 +20,6 @@ const ContactMeScreen = (props: any) => {
         subject: '',
         message: ''
     })
-
-
-
-
-
-
-
-
-    const handlePressPhone = () => {
-        const phoneNumber = '+919584937352';
-        Linking.openURL(`tel:${phoneNumber}`).catch(() =>
-            Alert.alert('Error', 'Unable to open the phone dialer.')
-        );
-    };
-
-    const handlePressEmail = () => {
-        const email = 'alauddinkhan29@gmail.com';
-        Linking.openURL(`mailto:${email}`).catch(() =>
-            Alert.alert('Error', 'Unable to open the email app.')
-        );
-    };
 
     const sendMail = async () => {
         setIsLoading(true)
@@ -74,8 +54,6 @@ const ContactMeScreen = (props: any) => {
                 onBackPress={() => props.navigation.goBack()}
                 title={"Contact Me"}
             />
-
-            {/* Contact Section */}
             {
                 isLoading ?
                     <View style={styles.loadingView}>
@@ -87,7 +65,7 @@ const ContactMeScreen = (props: any) => {
                         />
                     </View>
                     :
-                    <ScrollView style={styles.contactContainer}>
+                    <KeyboardAwareScrollView contentContainerStyle={styles.contactContainer}>
                         <View style={styles.labelView}>
                             <Text style={styles.labelTxt}>Full Name</Text>
                         </View>
@@ -128,11 +106,12 @@ const ContactMeScreen = (props: any) => {
                         <TouchableOpacity onPress={() => { sendMail() }} style={styles.sendMailBtn}>
                             <Text style={styles.labelTxt}>Send</Text>
                         </TouchableOpacity>
-                    </ScrollView>
+                    </KeyboardAwareScrollView>
             }
         </SafeAreaView>
     );
 };
+
 
 const styles = StyleSheet.create({
     loadingView: {
@@ -151,7 +130,7 @@ const styles = StyleSheet.create({
     },
     inputStyles: {
         height: verticalScale(40),
-        width: horizontalScale(315),
+        width: horizontalScale(330),
         // backgroundColor: "red",
         fontSize: horizontalScale(15),
         fontFamily: FONTS.InterDisplayBold,
@@ -160,7 +139,7 @@ const styles = StyleSheet.create({
     messageInputStyle: {
         paddingVertical: 18,
         // height: verticalScale(40),
-        width: horizontalScale(315),
+        width: horizontalScale(330),
         // backgroundColor: "red",
         fontSize: horizontalScale(18),
         fontFamily: FONTS.InterDisplayBold,
@@ -211,6 +190,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     contactContainer: {
+        flex: 1,
         paddingHorizontal: 16,
         marginVertical: 16,
         // backgroundColor: "red"

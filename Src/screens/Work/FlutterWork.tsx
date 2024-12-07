@@ -43,7 +43,7 @@ const FlutterWork = (props: any) => {
                             loop
                             style={{ width: horizontalScale(70), height: verticalScale(70) }}
                         />
-                        <Text style={{ marginTop: 10, color: "white" }}>Loading, Please wait.....</Text>
+                        <Text style={{ marginTop: 10, color: "white", fontFamily: FONTS.InterBold, fontSize: horizontalScale(14) }}>Loading, Please wait.....</Text>
                     </View>
                     :
                     <View style={styles.projectIconView}>

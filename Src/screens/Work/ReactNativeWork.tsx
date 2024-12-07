@@ -8,7 +8,7 @@ import { FONTS } from '../../utils/fonts'
 import ProjectApi from '../../api/ProjectApi'
 import LottieView from 'lottie-react-native'
 import { showMessage } from 'react-native-flash-message'
-const { height, width } = Dimensions.get('window')
+const { height, width } = Dimensions.get('screen')
 
 const ReactNativeWork = (props: any) => {
     const [projectsData, setProjectsData] = useState<Projects[]>([]);
@@ -49,12 +49,14 @@ const ReactNativeWork = (props: any) => {
                             loop
                             style={{ width: horizontalScale(70), height: verticalScale(70) }}
                         />
-                        <Text style={{ marginTop: 10, color: "white" }}>Loading, Please wait.....</Text>
+                        <Text style={{ marginTop: 10, color: "white", fontFamily: FONTS.InterBold, fontSize: horizontalScale(14) }}>Loading, Please wait.....</Text>
                     </View>
                     :
                     <View style={styles.projectIconView}>
                         <FlatList
                             data={projectsData}
+                            showsVerticalScrollIndicator={false}
+                            contentContainerStyle={{ marginBottom: 50 }}
                             renderItem={({ item }) => {
                                 return (
                                     <View style={styles.projectMainView}>
@@ -96,8 +98,9 @@ const styles = StyleSheet.create({
         color: COLOR.WHITE
     },
     projectIconView: {
-        height: verticalScale(650),
-        width: horizontalScale(330),
+        height: height * 0.85,
+        // width: horizontalScale(330),
+        // flex: 1,
         // backgroundColor: "red",
         alignSelf: "center",
         alignItems: "center"

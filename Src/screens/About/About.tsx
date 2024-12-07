@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     contactMeTxt: {
-        fontFamily: FONTS.InterBold,
-        fontSize: horizontalScale(24),
+        fontFamily: FONTS.InterDisplayBold,
+        fontSize: horizontalScale(18),
         color: COLOR.WHITE
     },
     contactMeBtn: {
