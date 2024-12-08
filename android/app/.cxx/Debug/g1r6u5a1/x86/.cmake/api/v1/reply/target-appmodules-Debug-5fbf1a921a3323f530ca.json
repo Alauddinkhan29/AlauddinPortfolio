@@ -261,6 +261,10 @@
 	[
 		{
 			"backtrace" : 4,
+			"id" : "react_codegen_lottiereactnative::@0fa4dc904d7e359a99fb"
+		},
+		{
+			"backtrace" : 4,
 			"id" : "react_codegen_RNLocalizeSpec::@f3ba5298aff84514e205"
 		},
 		{
@@ -270,10 +274,6 @@
 		{
 			"backtrace" : 4,
 			"id" : "react_codegen_rnscreens::@25bcbd507e98d3a854ad"
-		},
-		{
-			"backtrace" : 4,
-			"id" : "react_codegen_lottiereactnative::@0fa4dc904d7e359a99fb"
 		}
 	],
 	"id" : "appmodules::@6890427a1f51a3e7e1df",

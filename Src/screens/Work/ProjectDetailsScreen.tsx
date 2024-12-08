@@ -50,7 +50,7 @@ const ProjectDetailsScreen = (props: any) => {
                     </View>
                     :
                     <ScrollView
-                        contentContainerStyle={{ marginBottom: 15 }}
+                        contentContainerStyle={{ alignItems: "center", paddingHorizontal: 20, marginBottom: 25 }}
                         style={styles.content}>
                         {/* <Text style={styles.title}>Shopmatic</Text> */}
                         <Image source={{ uri: projectData?.picUrl }} style={styles.image} />
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
         // justifyContent: "center",
         // alignItems: "center",
         alignSelf: "center",
-        padding: 20
+
     },
     title: {
         fontSize: 24,

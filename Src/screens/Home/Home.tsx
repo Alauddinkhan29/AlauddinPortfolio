@@ -1,4 +1,4 @@
-import { Dimensions, Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, Linking, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { verticalScale, horizontalScale } from '../../utils/Scale'
 import { ImagePath } from '../../utils/ImagePath'
@@ -41,7 +41,7 @@ const Home = (props: any) => {
                                 </View>
                             </LinearGradient>
                             <View style={{ marginTop: 30, flexDirection: "row", height: verticalScale(80), width: horizontalScale(300), justifyContent: "space-around", alignItems: "center" }}>
-                                <TouchableOpacity style={styles.githubBtn}>
+                                <TouchableOpacity onPress={() => { Linking.openURL('https://github.com/Alauddinkhan29') }} style={styles.githubBtn}>
                                     {/* <Image source={ImagePath.github} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} /> */}
                                     <LottieView
                                         source={ImagePath.github}
@@ -50,7 +50,7 @@ const Home = (props: any) => {
                                         style={{ width: horizontalScale(70), height: verticalScale(70) }}
                                     />
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.githubBtn}>
+                                <TouchableOpacity onPress={() => { Linking.openURL('https://www.linkedin.com/in/alauddin-khan-a018b3243') }} style={styles.githubBtn}>
                                     {/* <Image source={ImagePath.linkedin} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} /> */}
                                     <LottieView
                                         source={ImagePath.linkedin}
