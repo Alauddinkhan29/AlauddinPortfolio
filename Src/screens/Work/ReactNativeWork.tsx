@@ -47,6 +47,7 @@ const ReactNativeWork = (props: any) => {
                             source={require('../../assets/images/wired-lineal-212-arrow-1-rounded-hover-pinch.json')}
                             autoPlay
                             loop
+                            useNativeLooping
                             style={{ width: horizontalScale(70), height: verticalScale(70) }}
                         />
                         <Text style={{ marginTop: 10, color: "white", fontFamily: FONTS.InterBold, fontSize: horizontalScale(14) }}>Loading, Please wait.....</Text>

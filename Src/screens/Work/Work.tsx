@@ -33,6 +33,7 @@ const Work = (props: any) => {
                             source={ImagePath.native}
                             autoPlay
                             loop
+                            useNativeLooping
                             style={{ width: horizontalScale(100), height: verticalScale(100) }}
                         />
                     </TouchableOpacity>
@@ -44,6 +45,7 @@ const Work = (props: any) => {
                             source={ImagePath.flutter}
                             autoPlay
                             loop
+                            useNativeLooping
                             style={{ width: horizontalScale(140), height: verticalScale(140) }}
                         />
                     </TouchableOpacity>

@@ -164,6 +164,7 @@ const ContactMeScreen = (props: any) => {
                         <LottieView
                             source={ImagePath.sendMail}
                             autoPlay
+                            useNativeLooping
                             loop
                             style={{ width: horizontalScale(80), height: verticalScale(80) }}
                         />

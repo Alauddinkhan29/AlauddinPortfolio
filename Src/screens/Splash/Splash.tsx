@@ -56,9 +56,7 @@ const Splash = (props: any) => {
     return (
         <View style={{ flex: 1, backgroundColor: COLOR.BACKGROUND_COLOR, justifyContent: 'center', alignItems: 'center' }}>
             <StatusBar backgroundColor={COLOR.BACKGROUND_COLOR} />
-            <Animated.View style={{ opacity: fadeAnim, transform: [{ translateX: fadeAnim.interpolate({ inputRange: [0, 12], outputRange: [0, -100] }) }], }}>
-                <Image source={ImagePath.Aicon} style={{ height: 200, width: 200, resizeMode: 'contain' }} />
-            </Animated.View>
+            <Image source={ImagePath.Aicon} style={{ height: 200, width: 200, resizeMode: 'contain' }} />
             <Animated.View style={{
                 opacity: fadeAnim,
                 transform: [{ translateX: fadeAnim.interpolate({ inputRange: [0, 1], outputRange: [-100, 0] }) }],

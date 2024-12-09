@@ -6,7 +6,11 @@ import { FONTS } from '../../utils/fonts'
 import { COLOR } from '../../utils/Color'
 import LottieView from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient'
+import HomeDetails from '../../components/HomeDetails'
+import Options from '../../components/Options'
+import HomeFooter from '../../components/HomeFooter'
 const { height, width } = Dimensions.get('window');
+
 
 const Home = (props: any) => {
     const [showOption, setShowOption] = useState(false)
@@ -24,87 +28,12 @@ const Home = (props: any) => {
             <View style={styles.middleView}>
                 {
                     showOption === false ?
-                        <View style={styles.aboutTxtView}>
-                            <View style={{ height: verticalScale(120), width: horizontalScale(300), justifyContent: "center", alignItems: "center" }}>
-                                <View style={{ height: 120, width: 120, borderRadius: 60, backgroundColor: "red", justifyContent: "center", alignItems: "center" }}>
-                                    <Image source={ImagePath.profilePic} style={{ height: 120, width: 120, resizeMode: "cover" }} />
-                                </View>
-                            </View>
-                            <LinearGradient
-                                start={{ x: 0, y: 0 }} // Start at the left
-                                end={{ x: 1, y: 0 }}   // End at the right
-                                colors={['#15202C', '#29333E', '#37414A']}
-                                style={styles.linearGradient}
-                            >
-                                <View style={{ height: verticalScale(280), width: horizontalScale(300), justifyContent: "center", alignItems: "center" }}>
-                                    <Text style={[styles.aboutTxt, { marginTop: 20 }]}>Hello, My name is Alauddin Khan. {'\n'}An Skilled Mobile App Developer with an expertise in Flutter and React Native.</Text>
-                                </View>
-                            </LinearGradient>
-                            <View style={{ marginTop: 30, flexDirection: "row", height: verticalScale(80), width: horizontalScale(300), justifyContent: "space-around", alignItems: "center" }}>
-                                <TouchableOpacity onPress={() => { Linking.openURL('https://github.com/Alauddinkhan29') }} style={styles.githubBtn}>
-                                    {/* <Image source={ImagePath.github} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} /> */}
-                                    <LottieView
-                                        source={ImagePath.github}
-                                        autoPlay
-                                        loop
-                                        style={{ width: horizontalScale(70), height: verticalScale(70) }}
-                                    />
-                                </TouchableOpacity>
-                                <TouchableOpacity onPress={() => { Linking.openURL('https://www.linkedin.com/in/alauddin-khan-a018b3243') }} style={styles.githubBtn}>
-                                    {/* <Image source={ImagePath.linkedin} style={{ height: verticalScale(55), width: horizontalScale(55), resizeMode: "contain" }} /> */}
-                                    <LottieView
-                                        source={ImagePath.linkedin}
-                                        autoPlay
-                                        loop
-                                        style={{ width: horizontalScale(70), height: verticalScale(70) }}
-                                    />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
+                        <HomeDetails />
                         :
-                        <>
-                            <TouchableOpacity onPress={() => props.navigation.navigate('About')} style={styles.optionView}>
-                                <LottieView
-                                    source={ImagePath.AboutIcon}
-                                    autoPlay
-                                    loop
-                                    style={{ width: horizontalScale(40), height: verticalScale(40) }}
-                                />
-                                <View style={styles.optionTxtView}>
-                                    <Text style={styles.optionTxt}>About</Text>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => props.navigation.navigate('Work')} style={styles.optionView}>
-                                <LottieView
-                                    source={ImagePath.WorkIcon}
-                                    autoPlay
-                                    loop
-                                    style={{ width: horizontalScale(40), height: verticalScale(40) }}
-                                />
-                                <View style={styles.optionTxtView}>
-                                    <Text style={styles.optionTxt}>Work</Text>
-                                </View>
-                            </TouchableOpacity>
-                            {/* <TouchableOpacity onPress={() => props.navigation.navigate('Service')} style={styles.optionView}>
-                                <Text style={styles.optionTxt}>Service</Text>
-                            </TouchableOpacity> */}
-                            <TouchableOpacity onPress={() => props.navigation.navigate('ContactMe')} style={styles.optionView}>
-                                <LottieView
-                                    source={ImagePath.ContactIcon}
-                                    autoPlay
-                                    loop
-                                    style={{ width: horizontalScale(40), height: verticalScale(40) }}
-                                />
-                                <View style={styles.optionTxtView}>
-                                    <Text style={styles.optionTxt}>Contact</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </>
+                        <Options properties={props} />
                 }
             </View>
-            <View style={styles.bottomView}>
-                <Image source={ImagePath.bottomIconfinal} style={{ height: verticalScale(180), width: horizontalScale(450), resizeMode: "stretch" }} />
-            </View>
+            <HomeFooter />
         </SafeAreaView>
     )
 }
